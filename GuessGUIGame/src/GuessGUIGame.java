@@ -70,7 +70,13 @@ public class GuessGUIGame extends JFrame {
 		}
 		
 		String message = "";
-		int guess = Integer.parseInt(guessText);
+		int guess = 0;
+		try {
+			guess = Integer.parseInt(guessText);
+		}catch (Exception e){
+			lbHint.setText("Please enter a valid number");
+			return;
+		}
 		
 		if (guess < target){
 			message = guess + "is too low";
