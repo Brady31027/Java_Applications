@@ -1,0 +1,49 @@
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.BorderLayout;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.JPanel;
+
+public class GuessGUIGame extends JFrame {
+	private JTextField tfGuess;
+	public GuessGUIGame() {
+		setTitle("JFrame Practice");
+		getContentPane().setLayout(null);
+		
+		JLabel lblGussingGame = new JLabel("Gussing Game");
+		lblGussingGame.setFont(new Font("Tahoma", Font.BOLD, 21));
+		lblGussingGame.setForeground(Color.GRAY);
+		lblGussingGame.setBounds(33, 0, 424, 26);
+		lblGussingGame.setHorizontalAlignment(SwingConstants.CENTER);
+		getContentPane().add(lblGussingGame);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(13, 72, 474, 42);
+		getContentPane().add(panel);
+		
+		JLabel lblGuessANumber = new JLabel("Guess a number between 1 and 100:");
+		panel.add(lblGuessANumber);
+		
+		tfGuess = new JTextField();
+		panel.add(tfGuess);
+		tfGuess.setColumns(5);
+		
+		JButton btnGuess = new JButton("Guess!");
+		btnGuess.setBounds(177, 126, 141, 35);
+		getContentPane().add(btnGuess);
+		
+		JLabel lblEnterANumber = new JLabel("Enter  a number above and click Guess!");
+		lblEnterANumber.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEnterANumber.setBounds(21, 182, 454, 26);
+		getContentPane().add(lblEnterANumber);
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+}

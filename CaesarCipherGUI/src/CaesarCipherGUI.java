@@ -9,15 +9,26 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JSlider;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
 
 public class CaesarCipherGUI extends JPanel {
 	private JTextField textInput;
 	private JTextField textOutput;
 	private JTextField tfKey;
 	
-	private void encode( String input, int key) {
+	private void encode() {
+		
+		String input = textInput.getText();
 		String output = "";
-
+		int key = 0;
+		try {
+			key = Integer.parseInt(tfKey.getText());
+		}catch (Exception e){
+			return;
+		}
+        
 		for (int i = 0; i < input.length(); i++) {
 			char c = input.charAt(i);
 			if ( c >= 'A' && c <= 'Z') {
@@ -45,36 +56,47 @@ public class CaesarCipherGUI extends JPanel {
 		textInput.setColumns(10);
 		
 		textOutput = new JTextField();
-		textOutput.setBounds(21, 190, 408, 89);
+		textOutput.setBounds(21, 199, 408, 89);
 		add(textOutput);
 		textOutput.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Key:");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel.setBounds(31, 131, 46, 26);
+		lblNewLabel.setBounds(214, 131, 46, 26);
 		add(lblNewLabel);
 		
 		tfKey = new JTextField();
-		tfKey.setBounds(84, 128, 93, 32);
+		tfKey.setBounds(264, 128, 58, 32);
 		add(tfKey);
 		tfKey.setColumns(10);
 		
 		JButton btnEncode = new JButton("Encode");
 		btnEncode.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int key = 0;
-				try {
-					key = Integer.parseInt(tfKey.getText());
-				}catch (Exception e){
-					return;
-				}
-				String input = textInput.getText(); 
-				encode(input, key);
+				encode();
 			}
 		});
-		btnEncode.setBounds(288, 127, 141, 35);
+		btnEncode.setBounds(328, 127, 101, 35);
 		add(btnEncode);
 		setPreferredSize( new Dimension(450, 320));
+		
+		JSlider sliderKey = new JSlider();
+		sliderKey.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+				tfKey.setText("" + sliderKey.getValue());
+				encode();
+			}
+		});
+		sliderKey.setPaintTicks(true);
+		sliderKey.setSnapToTicks(true);
+		sliderKey.setPaintLabels(true);
+		sliderKey.setMajorTickSpacing(13);
+		sliderKey.setMinorTickSpacing(1);
+		sliderKey.setValue(0);
+		sliderKey.setMinimum(-13);
+		sliderKey.setMaximum(13);
+		sliderKey.setBounds(21, 119, 193, 64);
+		add(sliderKey);
 	}
 	
 	public static void main(String[] args) {

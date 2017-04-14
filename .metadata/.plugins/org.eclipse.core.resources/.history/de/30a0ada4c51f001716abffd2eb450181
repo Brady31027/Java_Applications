@@ -1,0 +1,19 @@
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.BorderLayout;
+import javax.swing.SwingConstants;
+
+public class GuessGUIGame extends JFrame {
+	public GuessGUIGame() {
+		
+		JLabel lblGussingGame = new JLabel("Gussing Game");
+		lblGussingGame.setHorizontalAlignment(SwingConstants.CENTER);
+		getContentPane().add(lblGussingGame, BorderLayout.NORTH);
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
