@@ -17,13 +17,13 @@ public class CaesarCipher {
 			char outChar = inChar;
 			if (inChar >= 'A' && inChar <= 'Z') {
 				outChar = (char)(inChar + key);
-				if (outChar > 'Z') outChar -= 26;
-				else if (outChar < 'A') outChar += 26;
+				while (outChar > 'Z') outChar -= 26;
+				while (outChar < 'A') outChar += 26;
 			}
 			else if (inChar >= 'a' && inChar <= 'z') {
 				outChar = (char)(inChar + key);
-				if (outChar > 'z') outChar -= 26;
-				else if (outChar < 'a') outChar += 26;
+				while (outChar > 'z') outChar -= 26;
+				while (outChar < 'a') outChar += 26;
 			}
 			outStr += outChar;
 		}
