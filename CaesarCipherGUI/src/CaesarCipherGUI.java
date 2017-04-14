@@ -33,13 +33,13 @@ public class CaesarCipherGUI extends JPanel {
 			char c = input.charAt(i);
 			if ( c >= 'A' && c <= 'Z') {
 				c = (char)(c + key);
-				if (c > 'Z') c -= 26;
-				else if (c < 'A') c += 26;
+				while (c > 'Z') c -= 26;
+				while (c < 'A') c += 26;
 			}
 			else if (c >= 'a' && c <= 'z') {
 				c = (char)(c + key);
-				if (c > 'z') c -= 26;
-				else if (c < 'a') c += 26;
+				while (c > 'z') c -= 26;
+				while (c < 'a') c += 26;
 			}
 			output += c;
 		}
