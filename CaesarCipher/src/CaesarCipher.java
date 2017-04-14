@@ -16,10 +16,14 @@ public class CaesarCipher {
 			char inChar = inStr.charAt(i);
 			char outChar = inChar;
 			if (inChar >= 'A' && inChar <= 'Z') {
-				outChar = (char)((inChar - 'A' + key ) % 26 + 'A');
+				outChar = (char)(inChar + key);
+				if (outChar > 'Z') outChar -= 26;
+				else if (outChar < 'A') outChar += 26;
 			}
 			else if (inChar >= 'a' && inChar <= 'z') {
-				outChar = (char)((inChar - 'a' + key ) % 26 + 'a');
+				outChar = (char)(inChar + key);
+				if (outChar > 'z') outChar -= 26;
+				else if (outChar < 'a') outChar += 26;
 			}
 			outStr += outChar;
 		}
