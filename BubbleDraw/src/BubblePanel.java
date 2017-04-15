@@ -22,7 +22,7 @@ public class BubblePanel extends JPanel {
 	private Timer timer;
 	
 	private class Bubble {
-		private int x, y, size;
+		private int x, y, size, x_diff, y_diff;
 		private Color color;
 		
 		public Bubble(int newX, int newY, int newSize) {
@@ -32,10 +32,13 @@ public class BubblePanel extends JPanel {
 			color = new Color( (float) Math.random(), 
 					           (float) Math.random(), 
 					           (float) Math.random());
+			x_diff = (int)((Math.random() - 0.5 ) * 10 + 1);
+			y_diff = (int)((Math.random() - 0.5 ) * 10 + 1);
 		}
 		
 		private void update() {
-			y -= 5;
+			x += x_diff;
+			y += y_diff;
 		}
 	}
 	
