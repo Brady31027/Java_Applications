@@ -44,6 +44,13 @@ public class BubblePanel extends JPanel {
 		private void update() {
 			x += x_diff;
 			y += y_diff;
+			
+			if (x < 0 || x > getWidth()){
+				x_diff = -x_diff;
+			}
+			if (y < 0 || y > getHeight()) {
+				y_diff = -y_diff;
+			}
 		}
 	}
 	
